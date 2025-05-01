@@ -682,3 +682,22 @@
       height: 100% !important;
     }
   }
+
+/* Updated navbar and with logo */
+  .smartdose-logo {
+    height: 56px; 
+    width: auto;
+    margin-left: 1rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .smartdose-logo:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .smartdose-logo {
+      height: 35px;
+      margin-left: 0.5rem;
+    }
+  }
