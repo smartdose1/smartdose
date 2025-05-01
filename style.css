@@ -648,40 +648,34 @@
 
 /* Video Container Fixes */
 .video-card {
-    width: 100%;
-    max-width: 560px;
-    margin: 0 auto;
+  width: 80%; /* Reduced width by 20% */
+  max-width: 448px; /* 560px * 0.8 = 448px */
+  margin: 0 auto;
+}
+
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 19.69%; /* 56.25% * 0.35 = 19.6875% (65% height reduction) */
+}
+
+/* Mobile Overflow Prevention */
+@media (max-width: 768px) {
+  .video-card {
+    width: 90%; /* Slightly wider for mobile */
+    max-width: 360px;
+    padding: 0 0.5rem;
   }
-  
+
   .video-wrapper {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+    padding-top: 19.69%; /* Maintain aspect ratio */
   }
-  
-  /* Mobile Overflow Prevention */
-  @media (max-width: 768px) {
-    body {
-      overflow-x: hidden;
-    }
-    
-    .video-card {
-      min-width: unset !important;
-      padding: 0 0.5rem;
-    }
-    
-    .horizontal-card.video-container {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .video-wrapper iframe {
-      border-radius: 8px !important;
-      height: 100% !important;
-    }
+
+  .video-wrapper iframe {
+    height: 100% !important;
   }
+}
 
 /* Updated navbar and with logo */
   .smartdose-logo {
