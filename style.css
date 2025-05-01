@@ -1,0 +1,684 @@
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 123, 255, 0.8); 
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px); /* Safari support */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      text-align: center;
+      height: 10vh; 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and scale */
+    }
+    .navbar a:hover {
+      color: #ffcc00; /* Change color on hover */
+      transform: scale(1.1); /* Slightly enlarge the link on hover */
+    }
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background-color: #007bff;
+      position: absolute;
+      top: 10vh;
+      left: 0;
+      width: 100%;
+      padding: 1rem 0;
+      transition: all 0.3s ease-in-out; /* Smooth transition */
+    }
+    .nav-links a {
+      padding: 0.5rem 0;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    @media (min-width: 768px) {
+      .hamburger {
+        display: none;
+      }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: static;
+        background-color: transparent;
+      }
+      .nav-links a {
+        margin: 0 1rem;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://healthnewstribune.com/wp-content/uploads/2021/11/Medications-That-are-Safe-to-Take-During-Pregnancy.jpg')
+          center/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      flex-direction: column; /* Stack content vertically */
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      border-bottom-left-radius: 500px; /* Rounded corners */
+      border-bottom-right-radius: 500px; /* Rounded corners */
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      margin-bottom: 1rem; 
+    }
+
+    .btn-container {
+      margin-top: 1rem; 
+    }
+
+    .btn-cta {
+      padding: 0.8rem 1.5rem;
+      background-color: #0056b3;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin-top: 1.5rem; 
+      width: fit-content; /* Prevent button from stretching full width */
+    }
+    .btn-cta:hover {
+      background-color: #031c3b;
+      transform: scale(1.05); /* Slightly enlarge the button on hover */
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 2rem 1rem;
+      margin: 0;
+      width: 100%;
+      box-sizing: border-box;
+      scroll-margin-top: 10vh; /* Space for sticky navbar */
+    }
+
+    
+    .section p {
+      width: 70%; /* Restrict width for better readability */
+      margin: 1rem auto; /* Center horizontally and add vertical spacing */
+      line-height: 1.6;
+      text-align: center; 
+    }
+
+    
+    .section.bg-light {
+      background: linear-gradient(135deg, #f1f1f1, #ffffff);
+    }
+    .section.bg-dark {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+    }
+    .section h2 {
+      color: #007bff;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .section ul {
+      list-style: none; /* Remove bullets */
+      padding-left: 0; /* Remove default padding */
+      text-align: center; /* Center-align the list items */
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .section ul li {
+      margin-bottom: 0.5rem; /* Add spacing between list items */
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(to right, #007bff, #0056b3);
+      margin: 2rem 0;
+    }
+
+    
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none; 
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    #backToTop:hover {
+      background-color: #0056b3;
+    }
+
+    .horizontal-card {
+      display: flex;
+      flex-direction: row; /* Align image and content side by side */
+      align-items: center;
+      gap: 1.5rem; /* Add spacing between image and content */
+      margin-top: 1.5rem;
+    }
+
+    .card-img-left {
+      flex: 1; /* Image takes up equal space */
+      max-width: 40%; /* Limit the image width */
+      border-radius: 10px; /* Add rounded corners */
+    }
+
+    .card-content {
+      flex: 2; /* Content takes up more space */
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card-content h2 {
+      color: #007bff;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    .card-content p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+
+    .card-video {
+        flex: 1;
+        width: 100%;
+        max-width: 560px; 
+        height: 250px;
+        border-radius: 10px;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto; 
+        padding: 0 1rem; 
+      }
+    @media (max-width: 768px) {
+        .horizontal-card {
+            flex-direction: column;
+            text-align: center;
+            width: 100%; /* Add this */
+            margin: 0 auto; /* Add this */
+            padding: 0 0.5rem; /* Add this */
+          }
+          .card-video iframe {
+            height: 200px;
+            max-width: 100%; /* Add this */
+          }
+          .card-img-left { /* Fix missing dot here */
+            max-width: 100%;
+          }
+
+
+      card-img-left {
+        max-width: 100%; /* Full width for smaller screens */
+      }
+
+      .card-content {
+        text-align: center;
+        width: 100%;
+        padding: 0 1rem;
+
+      }
+      .row1, .row2 {
+       align-items: center;
+       gap: 1rem; /* Adjust gap for smaller screens */}
+      .card {
+       width: 90%; /* Adjust width for better centering */
+       max-width: 300px; /* Increase max-width for better mobile display */}
+     }
+
+    .vertical-cards {
+      display: flex;
+      flex-direction: column; /* Stack rows vertically */
+      gap: 2rem; /* Add spacing between rows */
+      margin-top: 1.5rem;
+    }
+
+    .row1,
+    .row2 {
+      display: flex;
+      flex-direction: row; /* Stack cards horizontally in each row */
+      gap: 1.5rem; /* Add spacing between cards */
+      justify-content: center; /* Center the cards in the row */
+    }
+
+    .card {
+      background-size: cover; /* Ensure the background image covers the card */
+      background-position: center; /* Center the background image */
+      background-repeat: no-repeat; /* Prevent the image from repeating */
+      border-radius: 10px; /* Add rounded corners */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      padding: 1rem;
+      text-align: center;
+      flex: 1 1 calc(30% - 1.5rem); /* Cards take up 30% of the row */
+      max-width: 250px; /* Limit the maximum width */
+      color: white; /* Ensure text is readable on the background */
+      position: relative; /* Position for overlay effect */
+      overflow: hidden; /* Ensure content stays within the card */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better text readability */
+      z-index: 1; /* Place the overlay below the text */
+    }
+
+    .card-body {
+      position: relative; /* Position content above the overlay */
+      z-index: 2; /* Ensure text is above the overlay */
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      color: #ffcc00; /* Highlighted title color */
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: white; /* Ensure text is readable */
+    }
+
+    @media (max-width: 768px) {
+      .row1,
+      .row2 {
+        flex-direction: column; /* Stack cards vertically on smaller screens */
+        gap: 1rem;
+      }
+
+      .card {
+        flex: 1 1 100%; /* Full width for smaller screens */
+      }
+    }
+
+    /* Hover effect for links in the Resources Section */
+    #resources a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    #resources a:hover {
+      color: #021e3b;
+      transform: scale(1.05); /* Slightly enlarge the link on hover */
+    }
+
+    /* Hover effect for cards in the Strategies Section */
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover, img:hover, video:hover {
+      transform: translateY(-5px); /* Lift the card slightly on hover */
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Add a stronger shadow on hover */
+    }
+
+    /* Hover effect for h2 and h1 elements */
+    h2, h1 {
+      transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and scale */
+    }
+
+    h2:hover ,h1:hover, footer p:hover {
+      color: #ffcc00; /* Change color on hover */
+      transform: scale(1.05); /* Slightly enlarge the heading on hover */
+    }
+
+    
+
+    /* Specific hover effect for white h2 elements in dark sections */
+    .section.bg-dark h2 {
+      color: white; /* Ensure the default color is white */
+    }
+
+    .section.bg-dark h2:hover {
+      color: #ffcc00; /* Change color to yellow on hover */
+    }
+
+    .progress p {
+      color: #fff; /* White text for the progress section */
+    }
+
+    .card-video video {
+     border-radius: 8px;}
+
+    /* Screen-reader-only text */
+    .sr-only {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     padding: 0;
+     margin: -1px;
+     overflow: hidden;
+     clip: rect(0 0 0 0);
+     border: 0;}
+
+     /* Focus states for existing elements */
+   .navbar a:focus, .btn-cta:focus, #backToTop:focus {
+     outline: 2px solid #ffcc00;
+     outline-offset: 2px;
+     }
+     /* Add these corrections to your existing styles */
+
+    /* Strategies Section Mobile Fix */
+    @media (max-width: 768px) {
+     .strategies .row1,
+     .strategies .row2 {
+      flex-direction: column;
+      align-items: center; /* Ensures vertical centering */
+     }
+  
+     .strategies .card {
+      width: 80%;
+      margin: 0 auto 1rem; /* Center cards horizontally */
+     }
+     }
+
+     /* Education Section Button Centering */
+      #education .card-content {
+      text-align: center;
+     }
+
+     #education .btn-cta {
+     align-self: center;
+     margin: 2rem 0 1rem;
+     }
+     .card-video iframe {
+    width: 100%;
+    height: 315px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .card-video iframe:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .card-video iframe {
+      height: 250px;
+    }
+  }
+  
+  
+  
+  /* Add to existing body styles */
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Update main content area */
+  main {
+    flex: 1;
+    padding: 2rem 0;
+  }
+
+   /* ===== Footer ===== */
+   footer {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+  
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .footer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+  
+    .footer-list li {
+      color: #fff;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+      transition: all 0.3s ease; }
+      @media (max-width: 768px) {
+      .footer-list li {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Video Header Styling */
+.card-video h3 {
+  color: #ffcc00;
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.card-video h3:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .card-video h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Video Header Container */
+.video-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Video Source Link Styling */
+.video-source-link {
+  color: #ffcc00;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.video-source-link:hover {
+  color: #fff;
+  border-bottom-color: #ffcc00;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .video-source-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* Progression Section Adjustments */
+.progress {
+  padding: 3rem 1rem;
+}
+
+.video-container {
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.text-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 1rem;
+}
+
+.video-card {
+  flex: 1.5;
+  min-width: 320px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.video-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.video-source {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.youtube-icon {
+  width: 24px;
+  height: 24px;
+  color: #ff0000;
+}
+
+.video-link {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.video-link:hover {
+  color: #fff;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+  }
+  
+  .video-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .text-content,
+  .video-card {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Video Container Fixes */
+.video-card {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  
+  .video-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+  }
+  
+  /* Mobile Overflow Prevention */
+  @media (max-width: 768px) {
+    body {
+      overflow-x: hidden;
+    }
+    
+    .video-card {
+      min-width: unset !important;
+      padding: 0 0.5rem;
+    }
+    
+    .horizontal-card.video-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .video-wrapper iframe {
+      border-radius: 8px !important;
+      height: 100% !important;
+    }
+  }
